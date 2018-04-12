@@ -8,12 +8,13 @@ HashMap以null作为key时，总是存储在table数组的第一个节点上
 4. HashMap的初始容量为16，Hashtable初始容量为11，两者的填充因子默认都是0.75
 HashMap扩容时是当前容量翻倍即:capacity\*2，Hashtable扩容时是容量翻倍+1即:capacity\*2+1
 5. 两者计算hash的方法不同
-Hashtable计算hash是直接使用key的hashcode对table数组的长度直接进行取模
+
+> Hashtable计算hash是直接使用key的hashcode对table数组的长度直接进行取模
 ```
 int hash = key.hashCode();
 int index = (hash & 0x7FFFFFFF) % tab.length;
 ```
-HashMap计算hash对key的hashcode进行了二次hash，以获得更好的散列值，然后对table数组长度取摸
+> HashMap计算hash对key的hashcode进行了二次hash，以获得更好的散列值，然后对table数组长度取摸
 ```
 static final hash(Object key){
     int h;
